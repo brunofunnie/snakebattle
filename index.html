@@ -1,24 +1,179 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Jogo da Cobrinha</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #0c2b03;
+        font-family: 'Lilita One', cursive;
+      }
+
+      .container {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      #assets {
+        display: none;
+      }
+
       canvas {
-        border: 1px solid black;
+        background: url('imgs/grass.jpg');
+      }
+
+      #canvas-container {
+        position: relative;
+        width: 815px;
+        height: 625px;
+      }
+
+      #snakeCanvas {
+        display: block;
+        top: 0;
+        left: 0;
+        background-color: black;
+      }
+
+      #canvas-container .newgame, #canvas-container .gameover {
+        position: absolute;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      #canvas-container .newgame .newgame-content,
+      #canvas-container .gameover .gameover-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.8);
+          width: 350px;
+          height: 350px;
+          border-radius: 20px;
+          color: white;
+          font-weight: 400;
+      }
+
+      #canvas-container .newgame .newgame-content h1 {
+        margin: 90px 0 30px 0;
+        font-size: 40px;
+      }
+
+      #canvas-container .gameover .gameover-content h1 {
+        margin: 65px 0 30px 0;
+        font-size: 40px;
+      }
+
+      #canvas-container .gameover .gameover-content .score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #canvas-container .gameover .gameover-content .score .number {
+        font-size: 30px;
+      }
+
+      #canvas-container .newgame .newgame-content button,
+      #canvas-container .gameover .gameover-content button {
+        margin-top: 20px;
+        height: 50px;
+        width: 150px;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        font-family: 'Lilita One', cursive;
+        font-size: 20px;
+        background: #1d6609;
+        color: white;
+      }
+
+      #canvas-container .newgame .newgame-content button:hover,
+      #canvas-container .gameover .gameover-content button:hover {
+        color: rgb(255, 217, 0);
+        filter: drop-shadow(0 0 10px rgb(255, 217, 0));
+      }
+
+      #canvas-container .newgame .newgame-content button:active,
+      #canvas-container .gameover .gameover-content button:active {
+        font-size: 17px;
+        filter: drop-shadow(0 0 10px rgb(255, 174, 0));
+      }
+
+      .header {
+        width: 500px;
+        display: none;
+        justify-content: space-between;
+        color: white;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 400;
+      }
+
+      .score {
+        display: flex;
+        align-items: end;
+        gap: 5px;
+        margin-bottom: 5px;
+
       }
     </style>
   </head>
   <body>
-    <canvas id="snakeCanvas"  style="  display: block;
-    width: 100%;
-    Height: 100%;
-    border: 1px solid #c33;
-    position: fixed; /*ou position: absolute;*/
-     top: 0;
-     left: 0;
-     background-color: black;
-     " width="1920" height="1080"></canvas>
+    <div class="container">
+      <div id="assets">
+        <img class="apple" src="imgs/apple.png">
+      </div>
+      <div class="header">
+        <h1 class="title">SnakerOo</h1>
+        <div class="score">
+          <span class="label">Points:</span>
+          <span class="number">0</span>
+        </div>
+      </div>
+      <div id="canvas-container">
+        <!-- New Game Screen -->
+        <div class="newgame">
+          <div class="newgame-content">
+            <h1>SnakerOo</h1>
+            <button>Play</button>
+          </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div class="gameover">
+          <div class="gameover-content">
+            <h1>GAME OVER</h1>
+            <div class="score">
+              <span>Total Points</span>
+              <span class="number">0</span>
+            </div>
+            <button >Play again</button>
+          </div>
+        </div>
+        <canvas id="snakeCanvas" width="815" height="625"></canvas>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
