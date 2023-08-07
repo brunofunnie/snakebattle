@@ -24,8 +24,6 @@ class Snake {
   makeFood() {
     if (this.state.food.length === 0) {
       for (let i = 0; i < this.state.numFood; i++) {
-        console.log('Engine Width', this.engine.width)
-        console.log('Engine Height', this.engine.height)
         let foodItem = {
           x: Math.floor(Math.random() * this.engine.width),
           y: Math.floor(Math.random() * this.engine.height),

@@ -18,10 +18,6 @@ class Engine {
   }
 
   drawImage(position, asset) {
-    console.log('Canvas Context', this.canvas_context)
-    console.log('BlockSize', this.block_size)
-    console.log('Assets', asset)
-    console.log('Position', position)
     this.canvas_context.drawImage(
       asset,
       position.x * this.block_size,

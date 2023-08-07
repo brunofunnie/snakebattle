@@ -8,7 +8,6 @@ class Game {
 
   gameLoop() {
     try {
-      console.log(this.snake)
       this.snake.moveSnake()
 
       if (this.engine.checkCollision(this.state)) {

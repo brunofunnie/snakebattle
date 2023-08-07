@@ -72,7 +72,6 @@ class GameInterface {
     this.updateScore(0)
     this.toggleHeader()
     this.toggleNewGameScreen()
-    console.log(this)
     this.state.start(this.gameLoop)
   }
 
